@@ -1,11 +1,10 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>TravelApp</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content color="secondary">
   <form #loginForm="ngForm" (submit)="onSubmit(loginForm)">
     <ion-list>
       <!-- Username input -->
@@ -46,7 +45,7 @@
   
     <div class="ion-padding">
       <!-- Submit button -->
-      <ion-button type="submit" expand="block" [disabled]="loginForm.invalid"
+      <ion-button type="submit" expand="block" [disabled]="loginForm.invalid" color="tertiary"
         >Log in</ion-button
       >
   
