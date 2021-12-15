@@ -39,3 +39,50 @@
     font-family:'Roboto', sans-serif;
     src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 }
+
+/* ------------ CSS global de l'app ------------ */
+h1 {
+    font-family: 'Revalia', cursive;
+    font-size: 24px;
+    color: var(--ion-color-secondary);
+}
+
+// les titres noirs dans la page d'un voyage
+h2{
+    font-family: 'Revalia', cursive;
+    font-size: 18px;
+    color: #000;
+}
+
+// les noms de voyage, p.ex "Tokyo 2022" 
+.txtBlanc{
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: var(--ion-color-primary-contrast); /*blanc*/
+}
+
+.txtVert{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: var(--ion-color-tertiary); /*vert*/
+}
+//classe des petits boutons (verts en général)
+.txtBtnSmall{
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+//classe des gros boutons oranges
+.txtBtnBig{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    
+}
+
+// liens dans la page d'un voyage
+.lienVoyage{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #000; /*noir*/
+    text-decoration: underline;
+}
