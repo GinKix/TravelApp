@@ -23,12 +23,29 @@ export class LoginPage {
    */
   loginError: boolean;
 
+  // Pour préparer les événements des 2 boutons de la page de login
+  public buttonClickedConnect: boolean = false;
+  public buttonClickedRegister: boolean = false;
+
   constructor(private auth: AuthService, private router: Router) {
     this.authRequest = {
       username: undefined,
       password: undefined,
     };
   }
+
+
+  public hide: boolean = true;
+  public onButtonClickConnect() {
+
+      this.buttonClickedConnect = !this.buttonClickedConnect;
+      this.hide = !this.hide;
+  }
+
+  public onButtonClickRegister() {
+
+    this.buttonClickedRegister = !this.buttonClickedRegister;
+}
 
   /**
    * Called when the login form is submitted.
