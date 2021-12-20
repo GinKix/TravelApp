@@ -1,11 +1,13 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { ReplaySubject, Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { ReplaySubject, Observable, from } from "rxjs";
+import { map, delayWhen } from "rxjs/operators";
 
 import { AuthResponse } from "../models/auth-response";
 import { User } from "../models/user";
 import { AuthRequest } from "../models/auth-request";
+
+import { Storage } from "@ionic/storage";
 
 const API_URL = "https://devmobil-near-bar.herokuapp.com/api";
 
@@ -16,10 +18,18 @@ const API_URL = "https://devmobil-near-bar.herokuapp.com/api";
 export class AuthService {
   #auth$: ReplaySubject<AuthResponse | undefined>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private storage: Storage) {
     this.#auth$ = new ReplaySubject(1);
+    this.storage.get('auth').then((auth) => {
+      // Emit the loaded value into the observable stream
+      this.#auth$.next(auth);
+    });
     // Emit an empty value on startup for now
-    this.#auth$.next();
+    //this.#auth$.next();
+  }
+
+  private saveAuth$(auth: AuthResponse): Observable<void> {
+    return from(this.storage.set('auth', auth));
   }
 
   isAuthenticated$(): Observable<boolean> {
@@ -37,6 +47,8 @@ export class AuthService {
   logIn$(authRequest: AuthRequest): Observable<User> {
     const authUrl = `${API_URL}/auth`;
     return this.http.post<AuthResponse>(authUrl, authRequest).pipe(
+      // Ralentir le flux observable pendant l'authentification
+      delayWhen((auth) => this.saveAuth$(auth)),
       map((auth) => {
         this.#auth$.next(auth);
         console.log(`User ${auth.user.name} logged in`);
@@ -47,6 +59,8 @@ export class AuthService {
 
   logOut(): void {
     this.#auth$.next(null);
+    // Remove the stored authentication from storage when logging out
+    this.storage.remove('auth');
     console.log("User logged out");
   }
 }

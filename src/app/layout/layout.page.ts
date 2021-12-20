@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 
+//Import pour l'authentification et inclure le l ogout
+import { Router } from '@angular/router';
+import { AuthService } from "src/app/auth/auth.service";
+
 // Type custom représentant les données d'une page
 declare type PageTab = {
   title: string; // Le titre de la page dans la barre de navigation
@@ -15,10 +19,23 @@ declare type PageTab = {
 export class LayoutPage {
   tabs: PageTab[];
 
-  constructor() { 
+  constructor(
+    // Inject the authentication provider.
+    private auth: AuthService,
+    // Inject the router
+    private router: Router
+  ) { 
     this.tabs = [
       {title: "Mon Compte", icon: "person-circle-outline", path:"profil-user"},
       {title: "Liste des Voyages", icon: "list", path:"liste-voyages"},
     ]
+  }
+
+  ngOnInit(){}
+
+  logOut(){
+    console.log("logging out...");
+    this.auth.logOut();
+    this.router.navigateByUrl("/login");
   }
 }
