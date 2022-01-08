@@ -70,6 +70,7 @@ h2{
 .txtBtnSmall{
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
+    align-self: center;
 }
 
 //classe des gros boutons oranges
@@ -85,4 +86,17 @@ h2{
     font-size: 16px;
     color: #000; /*noir*/
     text-decoration: underline;
+}
+
+
+.header-item-voyage{
+    background-color: var(--ion-color-tertiary);
+}
+
+.card-title-item-voyage, .card-subtitle-item-voyage{
+color: var(--ion-color-tertiary-contrast);
+}
+
+.img-voyage{
+    max-height: 200px;
 }
