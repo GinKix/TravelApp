@@ -8,10 +8,10 @@
   <br />
   <ion-img style="width: auto; height: auto; padding: 50px 120px;" src="../../../assets/img/icone.svg"></ion-img>
   <br />
-  <ion-button text-center (click)="onButtonClickRegister()" color="tertiary">Créer un compte</ion-button>
+  <ion-button text-center (click)="onButtonClickRegister()" *ngIf="hideRegister" color="tertiary">Créer un compte</ion-button>
   <br />
   <br />
-  <ion-button (click)="onButtonClickConnect()" *ngIf="hide" color="tertiary">Se connecter</ion-button>
+  <ion-button (click)="onButtonClickConnect()" *ngIf="hideConnect" color="tertiary">Se connecter</ion-button>
   <form #loginForm="ngForm" (submit)="onSubmit(loginForm)" *ngIf="buttonClickedConnect">
     <ion-list>
       <!-- Username input -->
