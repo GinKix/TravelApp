@@ -35,16 +35,18 @@ export class LoginPage {
   }
 
 
-  public hide: boolean = true;
+  public hideConnect: boolean = true;
+  public hideRegister: boolean = true;
   public onButtonClickConnect() {
 
       this.buttonClickedConnect = !this.buttonClickedConnect;
-      this.hide = !this.hide;
+      this.hideConnect = !this.hideConnect;
   }
 
   public onButtonClickRegister() {
 
     this.buttonClickedRegister = !this.buttonClickedRegister;
+    this.hideRegister = !this.hideRegister;
 }
 
   /**

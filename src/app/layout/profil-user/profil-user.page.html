@@ -1,9 +1,71 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>ProfilUser</ion-title>
-  </ion-toolbar>
+<ion-toolbar color="primary">
+  <ion-title>TravelApp</ion-title>
+</ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="secondary" class="ion-text-center">
+
+<form #form="ngForm" (ngSubmit)="onSubmit()" *ngIf="onButtonClickRegister">
+<ion-card>
+  <ng-container *ngIf="submissionType === 'join'">
+    <ion-item>
+      <ion-label position="floating">Votre nom d'utilisateur</ion-label>
+      <ion-input
+        #nameInput="ngModel"
+        ngModel
+        type="text"
+        name="name"
+        required
+      ></ion-input>
+    </ion-item>
+    <ion-text
+      color="danger"
+      *ngIf="!nameInput.valid && nameInput.touched"
+      >Merci de renseigner votre nom d'utilisateur.</ion-text
+    >
+  </ng-container>
+  
+  <ion-item>
+    <ion-label position="floating">Votre email</ion-label>
+    <ion-input
+      #emailInput="ngModel"
+      ngModel
+      type="email"
+      name="email"
+      required
+    ></ion-input>
+  </ion-item>
+  <ion-text color="danger" *ngIf="!emailInput.valid && emailInput.touched"
+    >Merci de renseigner votre adresse email.</ion-text
+  >
+  <ion-item>
+    <ion-label position="floating">Votre mot de passe</ion-label>
+    <ion-input
+      #passwordInput="ngModel"
+      ngModel
+      type="password"
+      name="password"
+      required
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    color="danger"
+    *ngIf="!passwordInput.valid && passwordInput.touched"
+    >Merci de renseigner un mot de passe valide.</ion-text
+  >
+  <p *ngIf="submissionType === 'join'" class="terms-and-conditions">
+    By clicking Agree & Join, you agree to join the platform
+ 
+  </p>
+  <ion-button
+    [disabled]="!form.valid"
+    type="submit"
+    shape="round"
+    expand="block"
+  >
+    {{ submissionType === 'login' ? 'Sign in' : 'Accept & Join' }}
+  </ion-button>
+</ion-card>
+</form>
 
 </ion-content>
