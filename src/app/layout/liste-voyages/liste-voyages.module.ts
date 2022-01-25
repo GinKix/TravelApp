@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { ListeVoyagesPageRoutingModule } from './liste-voyages-routing.module';
 
 import { ListeVoyagesPage } from './liste-voyages.page';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ListeVoyagesPageRoutingModule
+    ListeVoyagesPageRoutingModule,
+    HttpClientModule,
   ],
-  declarations: [ListeVoyagesPage]
+  declarations: [ListeVoyagesPage],
 })
 export class ListeVoyagesPageModule {}
