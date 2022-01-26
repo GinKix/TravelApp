@@ -1,27 +1,37 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage-angular';
-import { from, Observable, ReplaySubject } from 'rxjs';
-import { delayWhen, map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
-import { AuthRequest } from '../models/auth-request';
-import { AuthResponse } from '../models/auth-response';
-import { IRegister, IRegisterRetrieve } from '../models/iregister';
-import { User } from '../models/user';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { ReplaySubject, Observable, from } from "rxjs";
+import { map, delayWhen } from "rxjs/operators";
+
+import { AuthResponse } from "../models/auth-response";
+import { User } from "../models/user";
+import { AuthRequest } from "../models/auth-request";
+
+import { Storage } from "@ionic/storage";
+
+import { environment } from "src/environments/environment";
+
+//const API_URL = "https://devmobil-near-bar.herokuapp.com/api";
 
 /**
  * Authentication service for login/logout.
  */
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class AuthService {
   #auth$: ReplaySubject<AuthResponse | undefined>;
 
   constructor(private http: HttpClient, private storage: Storage) {
     this.#auth$ = new ReplaySubject(1);
     this.storage.get('auth').then((auth) => {
-      // Emit the loaded value into the observable stream.
+      // Emit the loaded value into the observable stream
       this.#auth$.next(auth);
     });
+    // Emit an empty value on startup for now
+    //this.#auth$.next();
+  }
+
+  private saveAuth$(auth: AuthResponse): Observable<void> {
+    return from(this.storage.set('auth', auth));
   }
 
   isAuthenticated$(): Observable<boolean> {
@@ -39,7 +49,7 @@ export class AuthService {
   logIn$(authRequest: AuthRequest): Observable<User> {
     const authUrl = `${environment.apiUrl}/auth`;
     return this.http.post<AuthResponse>(authUrl, authRequest).pipe(
-      // Delay the observable stream while persisting the authentication response.
+      // Ralentir le flux observable pendant l'authentification
       delayWhen((auth) => this.saveAuth$(auth)),
       map((auth) => {
         this.#auth$.next(auth);
@@ -49,19 +59,10 @@ export class AuthService {
     );
   }
 
-  register$(registerPayload: IRegister): Observable<IRegisterRetrieve> {
-    const registerUrl = `${environment.apiUrl}/users`;
-    return this.http.post<IRegisterRetrieve>(registerUrl, registerPayload);
-  }
-
   logOut(): void {
     this.#auth$.next(null);
-    // Remove the stored authentication from storage when logging out.
+    // Remove the stored authentication from storage when logging out
     this.storage.remove('auth');
-    console.log('User logged out');
-  }
-
-  private saveAuth$(auth: AuthResponse): Observable<void> {
-    return from(this.storage.set('auth', auth));
+    console.log("User logged out");
   }
 }
