@@ -1,12 +1,19 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { ListeVoyagesPage } from './liste-voyages.page';
+import { ListeVoyagesPage } from "./liste-voyages.page";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: ListeVoyagesPage,
+  },
+  {
+    path: "trip-details",
+    loadChildren: () =>
+      import("./trip-details/trip-details.module").then(
+        (m) => m.TripDetailsPageModule
+      ),
   },
 ];
 
