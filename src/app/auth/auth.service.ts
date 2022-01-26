@@ -9,7 +9,9 @@ import { AuthRequest } from "../models/auth-request";
 
 import { Storage } from "@ionic/storage";
 
-const API_URL = "https://devmobil-near-bar.herokuapp.com/api";
+import { environment } from "src/environments/environment";
+
+//const API_URL = "https://devmobil-near-bar.herokuapp.com/api";
 
 /**
  * Authentication service for login/logout.
@@ -45,7 +47,7 @@ export class AuthService {
   }
 
   logIn$(authRequest: AuthRequest): Observable<User> {
-    const authUrl = `${API_URL}/auth`;
+    const authUrl = `${environment.apiUrl}/auth`;
     return this.http.post<AuthResponse>(authUrl, authRequest).pipe(
       // Ralentir le flux observable pendant l'authentification
       delayWhen((auth) => this.saveAuth$(auth)),

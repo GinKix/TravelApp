@@ -7,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
 import { ViewDidEnter } from '@ionic/angular';
 import { AuthService } from 'src/app/auth/auth.service';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-liste-voyages',
   templateUrl: './liste-voyages.page.html',
@@ -16,7 +18,7 @@ export class ListeVoyagesPage implements ViewDidEnter {
   constructor(private auth: AuthService, public http: HttpClient) {}
 
   ionViewDidEnter(): void {
-    const url = 'https://devmobil-near-bar.herokuapp.com/api/Trips';
+    const url = `${environment.apiUrl}/Trips`;
     this.http.get(url).subscribe((trips) => {
       console.log(`Trips loaded`, trips);
     });
