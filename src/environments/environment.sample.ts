@@ -1,8 +1,8 @@
 // Copy this file to environment.ts and replace the values with your configuration
 export const environment = {
     production: false,
-    apiUrl: "https://devmobil-near-bar.herokuapp.com/api/",
+    apiUrl: "<your-api-url>",
     // TODO: add the qimg URL and secret token to the configuration
-    qimgUrl: "https://comem-qimg.herokuapp.com/api",
+    qimgUrl: "<your-api-url>",
     qimgSecret: "<change-with-your-token>",
   };
