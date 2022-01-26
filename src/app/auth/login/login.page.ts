@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 
-import { AuthService } from '../auth.service';
-import { AuthRequest } from 'src/app/models/auth-request';
+import { AuthService } from "../auth.service";
+import { AuthRequest } from "src/app/models/auth-request";
 
 @Component({
   //selector: 'app-login',
-  templateUrl: './login.page.html',
+  templateUrl: "./login.page.html",
   //styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
@@ -34,20 +34,18 @@ export class LoginPage {
     };
   }
 
-
   public hideConnect: boolean = true;
   public hideRegister: boolean = true;
   public onButtonClickConnect() {
-
-      this.buttonClickedConnect = !this.buttonClickedConnect;
-      this.hideConnect = !this.hideConnect;
+    this.buttonClickedConnect = !this.buttonClickedConnect;
+    this.hideConnect = !this.hideConnect;
   }
 
   public onButtonClickRegister() {
-
     this.buttonClickedRegister = !this.buttonClickedRegister;
     this.hideRegister = !this.hideRegister;
-}
+    this.router.navigate(["/register"]);
+  }
 
   /**
    * Called when the login form is submitted.
