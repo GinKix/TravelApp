@@ -1,0 +1,64 @@
+ion-header {
+  --background: #264653;
+}
+
+ion-header > ion-toolbar {
+  --background: #264653;
+}
+
+ion-content {
+  .div-trip-title {
+    h1 {
+      text-align: left;
+      color: #f4a261;
+      font-weight: bolder;
+      margin-top: -5px;
+    }
+  }
+
+  ion-item {
+    --padding-start: 0px;
+
+    .h2-start-date {
+      font-weight: bolder;
+    }
+
+    .h2-place {
+      font-size: smaller;
+      text-decoration: underline;
+    }
+
+    ion-button {
+      display: block;
+      right: 0px;
+      position: absolute;
+      --background: #e76f51;
+      --background-activated: #e76f51;
+      width: 64%;
+      top: 20px;
+      font-weight: bolder;
+    }
+  }
+
+  ion-list-header {
+    margin-top: 16px;
+    padding: 0px;
+    font-weight: bolder;
+    font-size: initial;
+  }
+
+  .delete-button {
+    top: 8px !important;
+  }
+
+  .button-add-place {
+    --background: #f4a261;
+    --background-activated: #f4a261;
+    --border-radius: 8px;
+    width: 60%;
+    margin: 46px auto;
+    height: 36px;
+    font-weight: bolder;
+    font-size: smaller;
+  }
+}

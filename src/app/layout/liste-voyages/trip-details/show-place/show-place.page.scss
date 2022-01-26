@@ -1,0 +1,39 @@
+ion-content {
+  ion-card {
+    margin: 0px;
+    margin-bottom: 30px;
+    border-radius: 0px;
+    display: block;
+    position: absolute;
+    bottom: -30px;
+  }
+
+  ion-card > ion-card-content {
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    background: #2a9d8f;
+    width: 100%;
+    color: white;
+    font-weight: bolder;
+    padding-left: 6px;
+
+    ion-label > h2 {
+      color: white;
+      font-weight: bolder;
+    }
+
+    ion-label > p {
+      color: white;
+      font-weight: bolder;
+    }
+
+    ion-icon {
+      display: block;
+      position: absolute;
+      right: 6px;
+      top: 26px;
+      font-size: x-large;
+    }
+  }
+}

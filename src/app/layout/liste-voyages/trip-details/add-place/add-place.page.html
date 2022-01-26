@@ -1,0 +1,53 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title color="light" class="ion-text-left">Travel App</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="div-title">
+    <h1>Ajouter une place</h1>
+  </div>
+  <div [formGroup]="createPlaceForm">
+    <ion-item lines="none">
+      <ion-label position="stacked" color="light">Nom de la place</ion-label>
+      <ion-input
+        inputmode="text"
+        required="true"
+        formControlName="title"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked" color="light"
+        >Description de la place</ion-label
+      >
+      <ion-textarea
+        inputmode="text"
+        required="true"
+        formControlName="description"
+        rows="6"
+        cols="20"
+      ></ion-textarea>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked" color="light"
+        >Photo du lieu (facultatif)</ion-label
+      >
+      <ion-button expand="block" shape="round" mode="ios" class="button-image">
+        <ion-icon name="cloud-upload"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <div class="ion-padding">
+      <ion-button
+        mode="ios"
+        type="submit"
+        expand="block"
+        [disabled]="createPlaceForm.invalid"
+        >Valider</ion-button
+      >
+    </div>
+  </div>
+</ion-content>
