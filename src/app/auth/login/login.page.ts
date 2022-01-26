@@ -1,16 +1,14 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
 
 import { AuthService } from '../auth.service';
-import { AuthRequest } from '../../models/auth-request';
+import { AuthRequest } from 'src/app/models/auth-request';
 
-/**
- * Login page.
- */
 @Component({
-  templateUrl: 'login.page.html',
-  styleUrls: ['login.page.scss'],
+  //selector: 'app-login',
+  templateUrl: './login.page.html',
+  //styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
   /**
@@ -25,12 +23,31 @@ export class LoginPage {
    */
   loginError: boolean;
 
+  // Pour préparer les événements des 2 boutons de la page de login
+  public buttonClickedConnect: boolean = false;
+  public buttonClickedRegister: boolean = false;
+
   constructor(private auth: AuthService, private router: Router) {
     this.authRequest = {
       username: undefined,
       password: undefined,
     };
   }
+
+
+  public hideConnect: boolean = true;
+  public hideRegister: boolean = true;
+  public onButtonClickConnect() {
+
+      this.buttonClickedConnect = !this.buttonClickedConnect;
+      this.hideConnect = !this.hideConnect;
+  }
+
+  public onButtonClickRegister() {
+
+    this.buttonClickedRegister = !this.buttonClickedRegister;
+    this.hideRegister = !this.hideRegister;
+}
 
   /**
    * Called when the login form is submitted.
@@ -46,7 +63,7 @@ export class LoginPage {
 
     // Perform the authentication request to the API.
     this.auth.logIn$(this.authRequest).subscribe({
-      next: () => this.router.navigateByUrl('/tabs'),
+      next: () => this.router.navigateByUrl("/"),
       error: (err) => {
         this.loginError = true;
         console.warn(`Authentication failed: ${err.message}`);
