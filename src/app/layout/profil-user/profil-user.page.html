@@ -1,71 +1,64 @@
-<ion-toolbar color="primary">
-  <ion-title>TravelApp</ion-title>
-</ion-toolbar>
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title color="light" class="ion-text-center">Profil</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="logOut()">
+        <ion-icon name="log-out" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content color="secondary" class="ion-text-center">
+<ion-content class="ion-padding">
+  <form #profileForm="ngForm" (submit)="onSubmit(profileForm)">
+    <ion-list>
+      <ion-item lines="none">
+        <ion-label position="stacked" color="light"
+          >Nom d'utilisateur</ion-label
+        >
+        <ion-input
+          inputmode="text"
+          #name="ngModel"
+          required="true"
+          name="username"
+          [(ngModel)]="updateUserPayload.name"
+        ></ion-input>
+      </ion-item>
 
-<form #form="ngForm" (ngSubmit)="onSubmit()" *ngIf="onButtonClickRegister">
-<ion-card>
-  <ng-container *ngIf="submissionType === 'join'">
-    <ion-item>
-      <ion-label position="floating">Votre nom d'utilisateur</ion-label>
-      <ion-input
-        #nameInput="ngModel"
-        ngModel
-        type="text"
-        name="name"
-        required
-      ></ion-input>
-    </ion-item>
-    <ion-text
-      color="danger"
-      *ngIf="!nameInput.valid && nameInput.touched"
-      >Merci de renseigner votre nom d'utilisateur.</ion-text
-    >
-  </ng-container>
-  
-  <ion-item>
-    <ion-label position="floating">Votre email</ion-label>
-    <ion-input
-      #emailInput="ngModel"
-      ngModel
-      type="email"
-      name="email"
-      required
-    ></ion-input>
-  </ion-item>
-  <ion-text color="danger" *ngIf="!emailInput.valid && emailInput.touched"
-    >Merci de renseigner votre adresse email.</ion-text
-  >
-  <ion-item>
-    <ion-label position="floating">Votre mot de passe</ion-label>
-    <ion-input
-      #passwordInput="ngModel"
-      ngModel
-      type="password"
-      name="password"
-      required
-    ></ion-input>
-  </ion-item>
-  <ion-text
-    color="danger"
-    *ngIf="!passwordInput.valid && passwordInput.touched"
-    >Merci de renseigner un mot de passe valide.</ion-text
-  >
-  <p *ngIf="submissionType === 'join'" class="terms-and-conditions">
-    By clicking Agree & Join, you agree to join the platform
- 
-  </p>
-  <ion-button
-    [disabled]="!form.valid"
-    type="submit"
-    shape="round"
-    expand="block"
-  >
-    {{ submissionType === 'login' ? 'Sign in' : 'Accept & Join' }}
-  </ion-button>
-</ion-card>
-</form>
+      <ion-item lines="none" *ngIf="name.invalid && name.touched">
+        <ion-text color="danger">Ce champ est obligatoire.</ion-text>
+      </ion-item>
 
+      <ion-item lines="none">
+        <ion-label position="stacked" color="light">Mot de passe</ion-label>
+        <ion-input
+          inputmode="text"
+          #password="ngModel"
+          required="true"
+          type="password"
+          name="password"
+          [(ngModel)]="updateUserPayload.password"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" *ngIf="password.invalid && password.touched">
+        <ion-text color="danger">Ce champ est obligatoire.</ion-text>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-button
+        mode="ios"
+        type="submit"
+        expand="block"
+        [disabled]="profileForm.invalid"
+        >Mettre à jour</ion-button
+      >
+
+      <ion-text color="danger" *ngIf="updateUserError"
+        >Le nom d'utilisateur ou le mot de passe est invalide.</ion-text
+      >
+    </div>
+  </form>
 </ion-content>
