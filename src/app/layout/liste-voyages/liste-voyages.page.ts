@@ -6,7 +6,6 @@ import { VoyageResponse } from 'src/app/models/voyage-reponse';
 import { HttpClient } from '@angular/common/http';
 import { ViewDidEnter } from '@ionic/angular';
 import { AuthService } from 'src/app/auth/auth.service';
-
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -15,12 +14,17 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./liste-voyages.page.scss'],
 })
 export class ListeVoyagesPage implements ViewDidEnter {
-  constructor(private auth: AuthService, public http: HttpClient) {}
+  listeVoyages: VoyageResponse[];
+
+  constructor(private listeVoyagesService: ListeVoyagesService) {}
 
   ionViewDidEnter(): void {
-    const url = `${environment.apiUrl}/Trips`;
-    this.http.get(url).subscribe((trips) => {
-      console.log(`Trips loaded`, trips);
-    });
+    this.listeVoyagesService
+      .getVoyages()
+      .subscribe((voyages) => (this.listeVoyages = voyages));
+  }
+
+  aVenir() {
+    this.listeVoyages.filter;
   }
 }

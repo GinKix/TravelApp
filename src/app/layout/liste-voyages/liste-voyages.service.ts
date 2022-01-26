@@ -8,7 +8,10 @@ import { VoyageResponse } from 'src/app/models/voyage-reponse';
   providedIn: 'root',
 })
 export class ListeVoyagesService {
-  constructor(private http: HttpClient) {}
+  voyageResponse: VoyageResponse;
+  constructor(private http: HttpClient) {
+    this.voyageResponse = this.voyageResponse;
+  }
 
   getVoyages(): Observable<VoyageResponse[]> {
     return this.http.get<VoyageResponse[]>(
