@@ -1,0 +1,30 @@
+ion-header {
+  --background: #264653;
+}
+
+ion-header > ion-toolbar {
+  --background: #264653;
+
+  ion-title {
+    margin-left: -14px;
+  }
+}
+
+ion-content {
+  --background: #f4a261;
+
+  .img-travel_icon {
+    display: grid;
+    margin: 20% auto;
+    height: 36%;
+  }
+
+  ion-button {
+    --border-radius: 8px;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    --background: #2a9d8f;
+    --background-activated: #2a9d8f;
+  }
+}
