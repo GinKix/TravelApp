@@ -10,27 +10,13 @@
   </div>
   <div [formGroup]="createTripForm">
     <ion-item lines="none">
-      <ion-label position="stacked" color="light"
-        >Nom de votre voyage</ion-label
-      >
-      <ion-input
-        inputmode="text"
-        required="true"
-        formControlName="title"
-      ></ion-input>
+      <ion-label position="stacked" color="light">Nom de votre voyage</ion-label>
+      <ion-input inputmode="text" required="true" formControlName="title"></ion-input>
     </ion-item>
 
     <ion-item lines="none">
-      <ion-label position="stacked" color="light"
-        >Description de votre voyage (facultatif)</ion-label
-      >
-      <ion-textarea
-        inputmode="text"
-        required="true"
-        formControlName="description"
-        rows="6"
-        cols="20"
-      ></ion-textarea>
+      <ion-label position="stacked" color="light">Description de votre voyage (facultatif)</ion-label>
+      <ion-textarea inputmode="text" required="true" formControlName="description" rows="6" cols="20"></ion-textarea>
     </ion-item>
 
     <ion-item lines="none">
@@ -43,35 +29,20 @@
 
     <ion-item lines="none">
       <ion-label position="stacked" color="light">Date début voyage</ion-label>
-      <ion-datetime
-        [doneText]="'OK'"
-        [cancelText]="'Annuler'"
-        displayFormat="DD-MM-YYYY"
-        placeholder="11-05-1995"
-        formControlName="startDate"
-      ></ion-datetime>
+      <ion-datetime [doneText]="'OK'" [cancelText]="'Annuler'" displayFormat="DD-MM-YYYY" placeholder="11-05-1995"
+        formControlName="startDate"></ion-datetime>
     </ion-item>
 
     <ion-item lines="none">
       <ion-label position="stacked" color="light">Date fin voyage</ion-label>
-      <ion-datetime
-        [doneText]="'OK'"
-        [cancelText]="'Annuler'"
-        displayFormat="DD-MM-YYYY"
-        placeholder="11-05-1995"
-        formControlName="endDate"
-      ></ion-datetime>
+      <ion-datetime [doneText]="'OK'" [cancelText]="'Annuler'" displayFormat="DD-MM-YYYY" placeholder="11-05-1995"
+        formControlName="endDate"></ion-datetime>
     </ion-item>
 
     <div class="ion-padding">
       <!-- Submit button -->
-      <ion-button
-        mode="ios"
-        type="submit"
-        expand="block"
-        [disabled]="createTripForm.invalid"
-        >Ajouter un voyage</ion-button
-      >
+      <ion-button mode="ios" type="submit" expand="block" [disabled]="createTripForm.invalid">Ajouter un voyage
+      </ion-button>
     </div>
   </div>
 </ion-content>

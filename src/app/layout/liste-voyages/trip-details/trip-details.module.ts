@@ -13,8 +13,8 @@ import { TripDetailsPage } from './trip-details.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    TripDetailsPageRoutingModule
+    TripDetailsPageRoutingModule,
   ],
-  declarations: [TripDetailsPage]
+  declarations: [TripDetailsPage],
 })
 export class TripDetailsPageModule {}

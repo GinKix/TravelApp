@@ -25,17 +25,16 @@ export class CreateTripPage {
     });
   }
 
-   loadImageFromDevice(event) {
-
+  loadImageFromDevice(event) {
     const preview = document.querySelector('img');
     const file = event.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
-  
+
     reader.onerror = (error) => {
       //handle errors
     };
-  };
+  }
 
   // Add a method to log out.
   logOut() {

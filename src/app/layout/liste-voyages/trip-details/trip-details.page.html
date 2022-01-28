@@ -1,83 +1,47 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title class="ion-text-center" color="light"
-      >Détails du voyage</ion-title
-    >
+    <ion-title class="ion-text-center" color="light">Détails du voyage</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <div class="div-trip-title">
-    <h1>Tokyo 2022</h1>
+    <h1>Futur titre dynamique</h1>
+    <!--{{listePlaces.tripId.title}} Ce bout ne fonctionne pas pour l'instant-->
   </div>
 
-  <img
-    src="https://airvoyages.fr/wp-content/uploads/2017/12/shutterstock_1115478317-1.jpg"
-    alt=""
-  />
+  <img src="https://airvoyages.fr/wp-content/uploads/2017/12/shutterstock_1115478317-1.jpg" alt="" />
 
   <ion-item lines="none">
     <ion-label slot="start">
       <h2 class="h2-start-date">Date de départ</h2>
-      <p>21 juin</p>
+      <p>21 juin</p> <!-- {{trip.startDate}}-->
     </ion-label>
 
     <ion-button mode="ios" expand="block" shape="round"> Modifier </ion-button>
+    <!-- [routerLink]="[mettre la route pour modifier un champ]""-->
   </ion-item>
 
   <ion-list-header> Liste des places </ion-list-header>
-  <ion-item lines="none">
-    <ion-label slot="start">
-      <h2
-        class="h2-place"
-        [routerLink]="['/liste-voyages/trip-details/show-place']"
-      >
-        Université de Tokyo
-      </h2>
-    </ion-label>
-
-    <ion-button mode="ios" expand="block" shape="round" class="delete-button">
-      Supprimer
-    </ion-button>
-  </ion-item>
 
   <ion-item lines="none">
-    <ion-label slot="start">
-      <h2
-        class="h2-place"
-        [routerLink]="['/liste-voyages/trip-details/show-place']"
-      >
-        Saitama
-      </h2>
-    </ion-label>
+    <div id="afficheDetails" *ngFor="let place of listePlaces">
 
-    <ion-button mode="ios" expand="block" shape="round" class="delete-button">
-      Supprimer
-    </ion-button>
+      <ion-label slot="start">
+
+        <h2 class="h2-place" [routerLink]="['/liste-voyages/trip-details/show-place']">
+          {{place.name}}
+        </h2>
+      </ion-label>
+
+      <ion-button mode="ios" expand="block" shape="round" class="delete-button">
+        Supprimer
+      </ion-button> <!-- [routerLink]="[mettre la route pour supprimer un champ]""-->
+    </div>
   </ion-item>
 
-  <ion-item lines="none">
-    <ion-label slot="start">
-      <h2
-        class="h2-place"
-        [routerLink]="['/liste-voyages/trip-details/show-place']"
-      >
-        Shinjuku
-      </h2>
-    </ion-label>
 
-    <ion-button mode="ios" expand="block" shape="round" class="delete-button">
-      Supprimer
-    </ion-button>
-  </ion-item>
-
-  <ion-button
-    class="button-add-place"
-    expand="block"
-    shape="round"
-    mode="ios"
-    [routerLink]="['add-place']"
-  >
+  <ion-button class="button-add-place" expand="block" shape="round" mode="ios" [routerLink]="['add-place']">
     Ajouter une place
   </ion-button>
 </ion-content>

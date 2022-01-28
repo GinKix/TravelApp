@@ -1,3 +1,9 @@
+import {
+  rawVoyageResponse,
+  VoyageResponse,
+} from 'src/app/models/voyage-reponse';
+import { rawVoyage, Voyages } from 'src/app/models/voyage-request';
+
 /**
  * Represents a Trip model as used throughout the application
  */
@@ -27,7 +33,7 @@ export class RawTrip {
  * @param raw The RawTrip model from the API
  * @return An instance of our custom Trip model
  */
-export function rawTripToTrip(raw: RawTrip): Trip {
+export function rawTripToTrip(raw: rawVoyageResponse): VoyageResponse {
   const decodedData = JSON.parse(raw.description);
   return {
     id: raw.id,
@@ -36,6 +42,12 @@ export function rawTripToTrip(raw: RawTrip): Trip {
     // Replace following lines with you custom properties
     startDate: decodedData.startDate,
     endDate: decodedData.endDate,
+    createdAt: raw.createdAt,
+    href: raw.href,
+    placesCount: raw.placesCount,
+    updatedAt: raw.updatedAt,
+    userHref: raw.userHref,
+    userId: raw.userId,
   };
 }
 
@@ -47,7 +59,7 @@ export function rawTripToTrip(raw: RawTrip): Trip {
  * @param trip The custom Trip model.
  * @returns An instance of RawTrip destined to the API.
  */
-export function tripToRawTrip(trip: Trip): RawTrip {
+export function tripToRawTrip(trip: Voyages): rawVoyage {
   const encodedData = JSON.stringify({
     description: trip.description,
     // Replace following lines with your custom properties

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { VoyageResponse } from 'src/app/models/voyage-reponse';
+import { PlaceResponse } from 'src/app/models/place-response';
 
 @Component({
   selector: 'app-trip-details',
@@ -6,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trip-details.page.scss'],
 })
 export class TripDetailsPage implements OnInit {
+  //voyage: VoyageResponse;
+  listePlaces: PlaceResponse[];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
