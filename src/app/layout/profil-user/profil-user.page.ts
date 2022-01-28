@@ -2,7 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/auth/auth.service";
+import { AuthRequest } from "src/app/models/auth-request";
 import { IRegister } from "src/app/models/iregister";
+import { Update } from "src/app/models/update";
 
 @Component({
   selector: "app-profil-user",
@@ -10,13 +12,14 @@ import { IRegister } from "src/app/models/iregister";
   styleUrls: ["./profil-user.page.scss"],
 })
 export class ProfilUserPage implements OnInit {
-  updateUserPayload: IRegister;
+  updateUserPayload: Update;
   updateUserError: boolean;
 
   constructor(private auth: AuthService, private router: Router) {
     this.updateUserPayload = {
       name: undefined,
       password: undefined,
+      id: undefined,
     };
   }
 
@@ -35,13 +38,13 @@ export class ProfilUserPage implements OnInit {
     this.updateUserError = false;
 
     // Perform the authentication request to the API.
-    /*this.auth.register$(this.updateUserPayload).subscribe({
-      next: () => this.router.navigateByUrl('/login'),
+    this.auth.update(this.updateUserPayload).subscribe({
+      next: () => this.router.navigateByUrl('/profil-user'),
       error: (err) => {
         this.updateUserError = true;
-        console.warn(`Registration failed: ${err.message}`);
+        console.warn(`Update failed: ${err.message}`);
       },
-    });*/
+    });
   }
 
   // Add a method to log out.
