@@ -16,6 +16,8 @@ import { environment } from 'src/environments/environment';
 export class ListeVoyagesPage implements ViewDidEnter {
   listeVoyages: VoyageResponse[];
   voyageFutur: VoyageResponse[];
+  voyagePasse: VoyageResponse[];
+  voyageAffiche: VoyageResponse[];
   //ici la liste de liste
 
   constructor(private listeVoyagesService: ListeVoyagesService) {}
@@ -31,12 +33,22 @@ export class ListeVoyagesPage implements ViewDidEnter {
         return voyageDate >= today;
       });
       console.log(this.voyageFutur);
+
+      this.voyagePasse = this.listeVoyages.filter((voyage) => {
+        const voyageDate = new Date(voyage.startDate);
+        const today = new Date();
+        return voyageDate <= today;
+      });
+      console.log(this.voyagePasse);
+
+      this.voyageAffiche = this.listeVoyages;
     });
   }
 
   tous() {}
   aVenir() {
     console.log('Le bouton à venir fonctionne');
+    this.voyageAffiche = this.voyageFutur;
 
     /*JUSTE, MAIS FAUX
     this.listeVoyagesService
@@ -50,6 +62,7 @@ let maDate = voyage.startDate
 
   passe() {
     console.log('Le bouton passé fonctionne');
+    this.voyageAffiche = this.voyagePasse;
     /*JUSTE, MAIS FAUX
     this.listeVoyagesService
       .getVoyages()

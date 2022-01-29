@@ -2,7 +2,7 @@
 export interface VoyageResponse extends rawVoyageResponse {
   startDate: string;
   endDate: string;
-  // QUESTION: comment on ajoute une image comme c'est pas un type fondamental?
+
   //img: ;
 }
 

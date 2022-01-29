@@ -18,44 +18,29 @@
     <ion-row>
       <!-- Les boutons du filtre-->
       <ion-col>
-        <ion-button class="txtBtnSmall" color="tertiary" (click)="aVenir()"
-          >A venir
+        <ion-button class="txtBtnSmall" color="tertiary" (click)="aVenir()">A venir
         </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button class="txtBtnSmall" color="tertiary" (click)="passe()"
-          >Passés</ion-button
-        >
+        <ion-button class="txtBtnSmall" color="tertiary" (click)="passe()">Passés</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button
-          class="txtBtnSmall"
-          color="tertiary"
-          (click)="ionViewDidEnter()"
-          >Tous</ion-button
-        >
+        <ion-button class="txtBtnSmall" color="tertiary" (click)="ionViewDidEnter()">Tous</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
 
   <!--<ion-row>
      <ion-col size="12"> -->
-  <ion-card
-    *ngFor="let trip of listeVoyages"
-    [routerLink]="['trip-details/', trip.id, trip.href]"
-  >
+  <ion-card *ngFor="let trip of voyageAffiche" [routerLink]="['trip-details/', trip.id, trip.href]">
     <!---->
     <ion-card-content>
-      <img
-        class="img-voyage"
-        src="https://airvoyages.fr/wp-content/uploads/2017/12/shutterstock_1115478317-1.jpg"
-        alt="Phuket"
-      />
+      <img class="img-voyage" src="https://airvoyages.fr/wp-content/uploads/2017/12/shutterstock_1115478317-1.jpg"
+        alt="Phuket" />
     </ion-card-content>
     <ion-card-header class="header-item-voyage">
       <ion-card-title class="card-title-item-voyage">
-        {{trip.title}}</ion-card-title
-      >
+        {{trip.title}}</ion-card-title>
       <!-- à remplacer comme valeur:Du {{voyages.startDate| date}} au {{voyages.endDate| date}} et ajouter le ngFor   <li *ngFor="let joke of jokes">{{ joke.text }}</li>
  -->
       <ion-card-subtitle class="card-subtitle-item-voyage">
@@ -67,13 +52,7 @@
     </ion-col>
   </ion-row> -->
 
-  <ion-button
-    color="secondary"
-    class="txtBtnBig"
-    id="creerVoyage"
-    [routerLink]="['/create-trip']"
-    expand="block"
-  >
+  <ion-button color="secondary" class="txtBtnBig" id="creerVoyage" [routerLink]="['/create-trip']" expand="block">
     Créer un voyage
   </ion-button>
 </ion-content>
