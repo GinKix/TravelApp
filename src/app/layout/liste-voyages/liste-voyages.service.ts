@@ -14,6 +14,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ListeVoyagesService {
+  updateCreateTripState$ = new BehaviorSubject<boolean>(false);
+
   constructor(private http: HttpClient) {}
 
   getVoyages(): Observable<VoyageResponse[]> {
@@ -53,5 +55,15 @@ export class ListeVoyagesService {
         // Converts the trip returned from the API to a model compatible with our application.
         .pipe(map(rawTripToTrip))
     );
+  }
+
+  deleteTrip(tripID: string): Observable<any> {
+    return this.http.delete<any>(
+      `https://devmobil-near-bar.herokuapp.com/api/trips/${tripID}`
+    );
+  }
+
+  getUpdateCreateTripState(): BehaviorSubject<boolean> {
+    return this.updateCreateTripState$;
   }
 }

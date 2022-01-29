@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { ViewDidEnter } from '@ionic/angular';
 import { AuthService } from 'src/app/auth/auth.service';
 import { environment } from 'src/environments/environment';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-liste-voyages',
@@ -20,11 +21,14 @@ export class ListeVoyagesPage implements ViewDidEnter {
   voyageAffiche: VoyageResponse[];
   //ici la liste de liste
 
-  constructor(private listeVoyagesService: ListeVoyagesService) {}
+  constructor(
+    private listeVoyagesService: ListeVoyagesService,
+    private alertController: AlertController
+  ) {}
 
   ionViewDidEnter(): void {
     this.listeVoyagesService.getVoyages().subscribe((voyages) => {
-      console.log(voyages);
+      //console.log(voyages);
       this.listeVoyages = voyages;
 
       this.voyageFutur = this.listeVoyages.filter((voyage) => {
@@ -32,7 +36,7 @@ export class ListeVoyagesPage implements ViewDidEnter {
         const today = new Date();
         return voyageDate >= today;
       });
-      console.log(this.voyageFutur);
+      //console.log(this.voyageFutur);
 
       this.voyagePasse = this.listeVoyages.filter((voyage) => {
         const voyageDate = new Date(voyage.startDate);
@@ -45,38 +49,42 @@ export class ListeVoyagesPage implements ViewDidEnter {
     });
   }
 
-  tous() {}
+  tous() {
+    console.log('Le bouton à venir fonctionne');
+    this.voyageAffiche = this.listeVoyages;
+  }
   aVenir() {
     console.log('Le bouton à venir fonctionne');
     this.voyageAffiche = this.voyageFutur;
-
-    /*JUSTE, MAIS FAUX
-    this.listeVoyagesService
-      .getVoyages()
-      .subscribe((voyages) => (this.listeVoyages = voyages));
-
-    let today = new Date().toISOString().slice(0, 10);
-let maDate = voyage.startDate
-    */
   }
 
   passe() {
     console.log('Le bouton passé fonctionne');
     this.voyageAffiche = this.voyagePasse;
-    /*JUSTE, MAIS FAUX
-    this.listeVoyagesService
-      .getVoyages()
-      .subscribe((voyages) => (this.listeVoyages = voyages));
+  }
 
-    let today = new Date().toISOString().slice(0, 10);
+  async supVoyage(trip: VoyageResponse) {
+    //return console.log('hi');
 
-    this.listeVoyages.filter((voyage) => {
-      if (voyage.startDate >= today) {
-        return false;
-      } else {
-        return true;
-      }
+    const alert = await this.alertController.create({
+      header: 'Attention !',
+      message: 'Voulez-vous supprimer le voyage ' + trip.title + ' ?',
+      buttons: [
+        {
+          text: 'Non',
+          role: 'cancel',
+        },
+        {
+          text: 'Oui',
+          handler: () => {
+            this.listeVoyagesService.deleteTrip(trip.id).subscribe(() => {
+              this.listeVoyagesService.updateCreateTripState$.next(true);
+            });
+          },
+        },
+      ],
     });
-    */
+    await alert.present();
+    this.voyageAffiche = this.listeVoyages;
   }
 }

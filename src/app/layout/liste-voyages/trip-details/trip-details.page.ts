@@ -67,6 +67,7 @@ export class TripDetailsPage implements OnInit {
 
   onShowPlace(place: PlaceResponse) {
     this.router.navigate(['/liste-voyages/trip-details/show-place'], {
+      /*Hello, je pense que c'est cet url qu'il faudra rendre dynamique pour afficher autre chose que l'ibis ^^ -J */
       queryParams: { place: JSON.stringify(place) },
     });
   }
