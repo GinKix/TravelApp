@@ -49,11 +49,15 @@ export class AddPlacePage implements OnInit {
         tripID: this.tripID,
       })
       .subscribe(() => {
-        this.router.navigate([
-          '/liste-voyages/trip-details/',
-          this.tripID,
-          this.tripHref,
-        ]);
+        this.router
+          .navigate([
+            '/liste-voyages/trip-details/',
+            this.tripID,
+            this.tripHref,
+          ])
+          .then(() => {
+            this.placeService.getUpdateCreatePlaceState().next(true);
+          });
       });
   }
 }
