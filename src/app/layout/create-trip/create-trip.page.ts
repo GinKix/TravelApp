@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { ListeVoyagesService } from '../liste-voyages/liste-voyages.service';
 
 @Component({
   selector: 'app-create-trip',
@@ -15,7 +16,8 @@ export class CreateTripPage {
     private auth: AuthService,
     // Inject the router
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private listeVoyagesService: ListeVoyagesService
   ) {
     this.createTripForm = this.formBuilder.group({
       title: [null, [Validators.required]],
@@ -23,6 +25,19 @@ export class CreateTripPage {
       startDate: [null, [Validators.required]],
       endDate: [null, [Validators.required]],
     });
+  }
+
+  onCreateTrip() {
+    this.listeVoyagesService
+      .createTrip$({
+        description: this.createTripForm.get('description').value,
+        endDate: this.createTripForm.get('endDate').value,
+        startDate: this.createTripForm.get('startDate').value,
+        title: this.createTripForm.get('title').value,
+      })
+      .subscribe(() => {
+        this.router.navigate(['liste-voyages']);
+      });
   }
 
   loadImageFromDevice(event) {

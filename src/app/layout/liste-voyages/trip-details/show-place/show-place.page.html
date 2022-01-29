@@ -11,7 +11,7 @@
         marginheight="0"
         marginwidth="0"
       ></iframe
-      ><a href="https://2piratebay.org"></a><br /><style>
+      ><style>
         .mapouter {
           position: relative;
           text-align: right;
@@ -39,8 +39,11 @@
     />
     <ion-card-content>
       <ion-label>
-        <h2>Ibis Lausanne Centre</h2>
-        <p>Rue du Maupas 20, 1004 Lausanne</p>
+        <h2>{{ place.name }}</h2>
+        <p>
+          {{ place.location.coordinates[0] }}, {{ place.location.coordinates[1]
+          }}
+        </p>
       </ion-label>
       <ion-icon src="../../../assets/icon/pin.svg"></ion-icon>
     </ion-card-content>
