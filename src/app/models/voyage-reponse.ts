@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export interface VoyageResponse extends rawVoyageResponse {
   startDate: string;
   endDate: string;
@@ -12,7 +13,6 @@ export type rawVoyageResponse = {
   id: string;
   placesCount: number;
   title: string;
-
   updatedAt: string;
   userHref: string;
   userId: string;
