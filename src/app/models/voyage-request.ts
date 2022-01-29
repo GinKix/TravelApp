@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export type Voyages = {
-  id: string;
+  id?: string;
   title: string;
   description: string;
   startDate: string;

@@ -1,4 +1,5 @@
 export type PlaceResponse = {
+  id: string;
   name: string;
   description: string;
   location: IGeoJsonPoint;
