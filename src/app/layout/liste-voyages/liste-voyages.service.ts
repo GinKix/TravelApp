@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Voyages } from 'src/app/models/voyage-request';
 import {
@@ -38,6 +38,20 @@ export class ListeVoyagesService {
   getOneVoyage(tripID: string): Observable<VoyageResponse> {
     return this.http.get<VoyageResponse>(
       `https://devmobil-near-bar.herokuapp.com/api/trips/${tripID}`
+    );
+  }
+
+  updateTrip(trip: Voyages): Observable<VoyageResponse> {
+    // Converts trip to create to an API compatible model
+    const body = tripToRawTrip(trip);
+    return (
+      this.http
+        .patch<rawVoyageResponse>(
+          `${environment.apiUrl}/trips/${trip.id}`,
+          body
+        )
+        // Converts the trip returned from the API to a model compatible with our application.
+        .pipe(map(rawTripToTrip))
     );
   }
 }
