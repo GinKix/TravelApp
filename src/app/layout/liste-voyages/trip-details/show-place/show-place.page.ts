@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { PlaceResponse } from 'src/app/models/place-response';
 
 @Component({
   selector: 'app-show-place',
@@ -8,12 +10,22 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class ShowPlacePage implements OnInit {
   location: SafeResourceUrl;
-  constructor(private sanitizer: DomSanitizer) {}
+  place: PlaceResponse;
+
+  constructor(
+    private sanitizer: DomSanitizer,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit() {
+    this.place = JSON.parse(
+      this.activatedRoute.snapshot.queryParams.place
+    ) as PlaceResponse;
     this.location = this.sanitizer.bypassSecurityTrustResourceUrl(
       'https://maps.google.com/maps?q=' +
-        'Rue du Maupas 20, 1004 Lausanne' +
+        this.place.location.coordinates[0] +
+        ',' +
+        this.place.location.coordinates[1] +
         '&t=&z=13&ie=UTF8&iwloc=&output=embed'
     );
   }
