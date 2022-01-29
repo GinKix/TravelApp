@@ -20,28 +20,36 @@
   <ion-item lines="none">
     <ion-label slot="start">
       <h2 class="h2-start-date">Date de départ</h2>
-      <p>21 juin</p>
+      <p>{{ startDate | date:'dd-MMMM-yyyy' }}</p>
       <!-- {{trip.startDate}}-->
     </ion-label>
 
-    <ion-button mode="ios" expand="block" shape="round"> Modifier </ion-button>
+    <ion-button
+      mode="ios"
+      expand="block"
+      shape="round"
+      (click)="onUpdateTrip(trip)"
+    >
+      Modifier
+    </ion-button>
     <!-- [routerLink]="[mettre la route pour modifier un champ]""-->
   </ion-item>
 
   <ion-list-header> Liste des places </ion-list-header>
 
-  <ion-item lines="none">
-    <div id="afficheDetails" *ngFor="let place of listePlaces">
+  <ion-item lines="none" *ngFor="let place of listePlaces">
+    <div id="afficheDetails">
       <ion-label slot="start">
-        <h2
-          class="h2-place"
-          (click)="onShowPlace(place)"
-        >
-          {{place.name}}
-        </h2>
+        <h2 class="h2-place" (click)="onShowPlace(place)">{{place.name}}</h2>
       </ion-label>
 
-      <ion-button mode="ios" expand="block" shape="round" class="delete-button">
+      <ion-button
+        mode="ios"
+        expand="block"
+        shape="round"
+        class="delete-button"
+        (click)="onDeletePlace(place)"
+      >
         Supprimer
       </ion-button>
       <!-- [routerLink]="[mettre la route pour supprimer un champ]""-->
