@@ -15,6 +15,11 @@ const routes: Routes = [
       import('./add-place/add-place.module').then((m) => m.AddPlacePageModule),
   },
   {
+    path: 'add-place/:tripID/:tripHref',
+    loadChildren: () =>
+      import('./add-place/add-place.module').then((m) => m.AddPlacePageModule),
+  },
+  {
     path: 'show-place',
     loadChildren: () =>
       import('./show-place/show-place.module').then(

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { VoyageResponse } from 'src/app/models/voyage-reponse';
 import { PlaceResponse } from 'src/app/models/place-response';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ListeVoyagesService } from '../liste-voyages.service';
+import { PlaceService } from './place.service';
 
 @Component({
   selector: 'app-trip-details',
@@ -10,8 +13,37 @@ import { PlaceResponse } from 'src/app/models/place-response';
 export class TripDetailsPage implements OnInit {
   //voyage: VoyageResponse;
   listePlaces: PlaceResponse[];
+  tripID: string;
+  tripHref: string;
+  trip: VoyageResponse;
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private listeVoyagesService: ListeVoyagesService,
+    private placeService: PlaceService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.tripID = this.activatedRoute.snapshot.params.tripID;
+    this.tripHref = this.activatedRoute.snapshot.params.tripHref;
+
+    this.listeVoyagesService
+      .getOneVoyage(this.tripID)
+      .subscribe((tripResponse: VoyageResponse) => {
+        this.trip = tripResponse;
+      });
+
+    this.placeService
+      .getPlaces()
+      .subscribe((placesResponse: PlaceResponse[]) => {
+        this.listePlaces = placesResponse;
+      });
+  }
+
+  onShowPlace(place: PlaceResponse) {
+    this.router.navigate(['/liste-voyages/trip-details/show-place'], {
+      queryParams: { place: JSON.stringify(place) },
+    });
+  }
 }
