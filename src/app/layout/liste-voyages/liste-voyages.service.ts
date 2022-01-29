@@ -35,4 +35,9 @@ export class ListeVoyagesService {
     );
   }
   //crer methode pour recup 1 voyage. Elle aura un id,
+  getOneVoyage(tripID: string): Observable<VoyageResponse> {
+    return this.http.get<VoyageResponse>(
+      `https://devmobil-near-bar.herokuapp.com/api/trips/${tripID}`
+    );
+  }
 }
