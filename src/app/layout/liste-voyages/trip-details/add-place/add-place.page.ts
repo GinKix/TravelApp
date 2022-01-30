@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PlaceService } from '../place.service';
+import { PictureService } from 'src/app/picture/picture.service';
+import { QimgImage } from 'src/app/models/qimg-image';
 
 @Component({
   selector: 'app-add-place',
@@ -12,12 +14,14 @@ export class AddPlacePage implements OnInit {
   createPlaceForm: FormGroup;
   tripID: string;
   tripHref: string;
+  picture: QimgImage;
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private placeService: PlaceService
+    private placeService: PlaceService,
+    private pictureService: PictureService
   ) {
     this.createPlaceForm = this.formBuilder.group({
       title: [null, [Validators.required]],
@@ -32,6 +36,10 @@ export class AddPlacePage implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  takePicture(){
+    this.pictureService.takeAndUploadPicture();
+  }
 
   onCreatePlace() {
     this.placeService

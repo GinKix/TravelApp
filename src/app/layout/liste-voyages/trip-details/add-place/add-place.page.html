@@ -50,13 +50,16 @@
     </ion-item>
 
     <ion-item lines="none">
-      <ion-label position="stacked" color="light"
-        >Photo du lieu (facultatif)</ion-label
-      >
-      <ion-button expand="block" shape="round" mode="ios" class="button-image">
-        <ion-icon name="cloud-upload"></ion-icon>
+      <ion-label position="stacked" color="light">
+        Prendre une photo du lieu (facultatif)
+      </ion-label>
+      <ion-button expand="block" shape="round" mode="ios" class="button-image" (click)="takePicture()">
+        <ion-icon name="cloud-upload">
+          <img *ngIf="picture" [src]="picture.url" />
+        </ion-icon>
       </ion-button>
     </ion-item>
+    
 
     <div class="ion-padding">
       <ion-button
