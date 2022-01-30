@@ -50,7 +50,7 @@ export class RegisterPage implements OnInit {
 
     // Perform the authentication request to the API.
     this.auth.register(this.registerPayload).subscribe({
-      next: () => this.router.navigateByUrl('/'),
+      next: () => this.router.navigateByUrl('/login'),
       error: (err) => {
         this.registerError = true;
         console.warn(`Registration failed: ${err.message}`);
