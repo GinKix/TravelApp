@@ -1,8 +1,6 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title class="ion-text-center" color="light"
-      >Détails du voyage</ion-title
-    >
+    <ion-title class="ion-text-center" color="light">Détails du voyage</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,10 +10,7 @@
     <!--{{listePlaces.tripId.title}} Ce bout ne fonctionne pas pour l'instant-->
   </div>
 
-  <img
-    src="https://airvoyages.fr/wp-content/uploads/2017/12/shutterstock_1115478317-1.jpg"
-    alt=""
-  />
+  <img src="https://airvoyages.fr/wp-content/uploads/2017/12/shutterstock_1115478317-1.jpg" alt="" />
 
   <ion-item lines="none">
     <ion-label slot="start">
@@ -24,15 +19,9 @@
       <!-- {{trip.startDate}}-->
     </ion-label>
 
-    <ion-button
-      mode="ios"
-      expand="block"
-      shape="round"
-      (click)="onUpdateTrip(trip)"
-    >
+    <ion-button mode="ios" expand="block" shape="round" (click)="onUpdateTrip(trip)">
       Modifier
     </ion-button>
-    <!-- [routerLink]="[mettre la route pour modifier un champ]""-->
   </ion-item>
 
   <ion-list-header> Liste des places </ion-list-header>
@@ -43,26 +32,14 @@
         <h2 class="h2-place" (click)="onShowPlace(place)">{{place.name}}</h2>
       </ion-label>
 
-      <ion-button
-        mode="ios"
-        expand="block"
-        shape="round"
-        class="delete-button"
-        (click)="onDeletePlace(place)"
-      >
+      <ion-button mode="ios" expand="block" shape="round" class="delete-button" (click)="onDeletePlace(place)">
         Supprimer
       </ion-button>
-      <!-- [routerLink]="[mettre la route pour supprimer un champ]""-->
     </div>
   </ion-item>
 
-  <ion-button
-    class="button-add-place"
-    expand="block"
-    shape="round"
-    mode="ios"
-    [routerLink]="['add-place', tripID, tripHref]"
-  >
+  <ion-button class="button-add-place" expand="block" shape="round" mode="ios"
+    [routerLink]="['add-place', tripID, tripHref]">
     Ajouter une place
   </ion-button>
 </ion-content>

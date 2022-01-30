@@ -94,3 +94,37 @@ export class TripDetailsPage implements OnInit {
     await alert.present();
   }
 }
+/***********   Tentative retourner les places d'un voyage   *********** */
+// .getOneVoyage(this.tripID)
+// .subscribe((tripResponse: VoyageResponse) => {
+//   this.trip = tripResponse;
+//   this.startDate = JSON.parse(this.trip.description).startDate;
+// });
+
+// this.places = []; //vide le tab
+// this.placeService.getPlaces(this.tripID).subscribe((places) => {
+//   this.places = places;
+// });
+
+// this.placeService
+//   .getPlaces()
+
+//   .subscribe((placesResponse: PlaceResponse[]) => {
+//     this.listePlaces = placesResponse;
+//   //faire tableau
+//     this.placeService = ;
+//   });
+
+// this.placeService
+//   .getUpdateCreatePlaceState()
+//   .subscribe((placeState: boolean) => {
+//     if (placeState) {
+// this.placeService
+//   .getPlaces()
+//   .subscribe((placesResponse: PlaceResponse) => {
+//     this.listePlaces = placesResponse;
+//   });
+
+//     this.placeService.getUpdateCreatePlaceState().next(false);
+//   }
+// });

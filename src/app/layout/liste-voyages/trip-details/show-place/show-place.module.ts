@@ -9,12 +9,7 @@ import { ShowPlacePageRoutingModule } from './show-place-routing.module';
 import { ShowPlacePage } from './show-place.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ShowPlacePageRoutingModule
-  ],
-  declarations: [ShowPlacePage]
+  imports: [CommonModule, FormsModule, IonicModule, ShowPlacePageRoutingModule],
+  declarations: [ShowPlacePage],
 })
 export class ShowPlacePageModule {}
