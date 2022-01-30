@@ -101,9 +101,9 @@ export class AuthService {
 
   update(update: Update): Observable<String> {
     //const userId = this.storage.get(update.id);
-    var userId = this.storage.get('id'),
-      toString = userId.toString();
-    const updateUrl = `${environment.apiUrl}users/${userId}`;    
+    //var userId = this.storage.get('id'),
+    //  toString = userId.toString();
+    const updateUrl = `${environment.apiUrl}users/${update.id}`;    
     
     return this.http.patch<Update>(updateUrl, update).pipe(
       delayWhen((update) => this.saveUpdate$(update)),
