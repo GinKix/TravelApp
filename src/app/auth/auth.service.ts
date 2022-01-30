@@ -84,7 +84,7 @@ export class AuthService {
 
   logIn$(authRequest: AuthRequest): Observable<User> {
     const authUrl = `${environment.apiUrl}auth`;
-    return this.http.post<AuthResponse>(authUrl, authRequest).pipe(
+    return this.http.post<IRegister>(authUrl, authRequest).pipe(
       // Ralentir le flux observable pendant l'authentification
       delayWhen((auth) => this.saveAuth$(auth)),
       map((auth) => {
