@@ -2,7 +2,7 @@
 
 ## Contexte
 Projet du cours *DevMobile*
-Le rendu de ce projet est une webapp mobile permettant de se gérer une liste de voyage. Nous l'avons appelé TravelApp. Il est possible de se créer un compte ou de se connecter avec un utilisateur existant. On a accès à une liste de voyage créée au préalable. Sinon une liste de destinations sera affichée. Plusieurs listes peuvent être créées ou plusieurs destinations peuvent être ajoutées à une liste. Les destinations peuvent aussi être ajoutées directement à partir d'une carte.
+Le rendu de ce projet est une webapp mobile permettant de se gérer une liste de voyage. Nous l'avons appelé TravelApp. Il est possible de se créer un compte ou de se connecter avec un utilisateur existant. On a accès à une liste de voyage créée au préalable. Sinon une liste de destinations sera affichée. Plusieurs listes peuvent être créées ou plusieurs destinations peuvent être ajoutées à une liste. 
 
 ## Fonctionnement
 Pour commencer, il faut cloner le projet sur VisualStudioCode (ou autre éditeur de texte/code utilisé). Les méthodes proposées par Git sont à l'aide de la ligne de commande **git clone** suivi de l'adresse HTTPS, SSH ou directement avec le GitHub CLI. Il est aussi possible de télécharger ce projet directement sous forme de ZIP et il suffira juste de l'extraire ou encore d'utiliser le GitHub Desktop. Quand le dossier complet est ajouté à votre éditeur de code, il faut ouvrir un terminal et se déplacer à la racine du dossier. Ensuite il est nécessaire de faire un **npm install** pour avoir toutes les extensions nécessaires au fonctionnement du projet. Quand l'installation est effectuée, la commande **ionic serve** permet d'accéder à l'application
