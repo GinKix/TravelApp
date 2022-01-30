@@ -10,3 +10,9 @@ Pour commencer, il faut cloner le projet sur VisualStudioCode (ou autre éditeur
 ## Utilisation
 Pour commencer, une connexion est nécessaire, si vous disposez déjà d'un compte, il suffit de vous connecter sinon il faudra s'enregistrer. L'enregistrement nécessite simplement un nom d'utilisateur et un mot de passe.
 Une fois connecté, la page listant tous les voyages créés s'affichent. En cliquant sur l'image, les détails du voyage apparaissent, en montrant cette dite-image, la date de départ et la liste des places à visiter. Il est possible de modifier ces données: En cliquant sur le bouton **Modifier**, vous pouvez changer le nom du voyage, la description, l'image ainsi que la date de départ et d'arrivée. La liste des places peut être aussi changée, en supprimant une place (bouton **Supprimer**) ou en ajoutant une (bouton **Ajouter une place**). Ces 2 interactions sont effectuées à l'aide des 2 boutons indiqués. L'ajout de place nécessite un nom, une description, la latitude et la longitude. Optionnellement vous pouvez ajouter une photo directement depuis votre appareil ou votre galerie.
+
+
+## Remarques
+Les images ne sont pas liées aux voyages et est encore à implémenter/corriger.
+Les places ne sont pas filtrées par voyage concerné et s'affichent toutes et partout. Une tentative est disponible en commentaire dans les fichiers concernés. 
+L'enregistrement de l'utilisateur fonctionne mais on ne reçoit pas de réponse, même en cas de succès. 
