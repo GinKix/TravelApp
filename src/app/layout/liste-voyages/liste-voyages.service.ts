@@ -44,7 +44,7 @@ export class ListeVoyagesService {
   }
 
   updateTrip(trip: Voyages): Observable<VoyageResponse> {
-    // Converts trip to create to an API compatible model
+    // Converts trip to create to an API compatible modely
     const body = tripToRawTrip(trip);
     return (
       this.http
