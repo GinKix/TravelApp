@@ -85,6 +85,6 @@ export class ListeVoyagesPage implements ViewDidEnter {
       ],
     });
     await alert.present();
-    this.voyageAffiche = this.listeVoyages;
+    return this.listeVoyages;
   }
 }
