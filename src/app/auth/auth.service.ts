@@ -19,8 +19,10 @@ import { Update } from "../models/update";
 @Injectable({ providedIn: "root" })
 export class AuthService {
   #auth$: ReplaySubject<AuthResponse | undefined>;
-  #register$: ReplaySubject<IRegister | undefined>;
+  #register$: ReplaySubject<AuthResponse | undefined>;
   #update$: ReplaySubject<Update | undefined>;
+
+  
 
   constructor(private http: HttpClient, private storage: Storage) {
     this.#auth$ = new ReplaySubject(1);
@@ -40,13 +42,15 @@ export class AuthService {
       // Emit the loaded value into the observable stream
       this.#update$.next(update);
     });
+
+    
   }
 
   private saveAuth$(auth: AuthResponse): Observable<void> {
     return from(this.storage.set('auth', auth));
   }
 
-  private saveRegister$(register: IRegister): Observable<void> {
+  private saveRegister$(register: AuthResponse): Observable<void> {
     return from(this.storage.set('users', register));
   }
 
@@ -72,7 +76,7 @@ export class AuthService {
 
   register(iregister: IRegister): Observable<User> {
     const registerUrl = `${environment.apiUrl}/users`;
-    return this.http.post<IRegister>(registerUrl, iregister).pipe( 
+    return this.http.post<AuthResponse>(registerUrl, iregister).pipe(
       delayWhen((register) => this.saveRegister$(register)),
       map((register) => {
         this.#register$.next(register);
@@ -96,7 +100,9 @@ export class AuthService {
   }
 
   update(update: Update): Observable<String> {
-    const userId = this.storage.get(update.id);
+    //const userId = this.storage.get(update.id);
+    var userId = this.storage.get('id'),
+      toString = userId.toString();
     const updateUrl = `${environment.apiUrl}users/${userId}`;    
     
     return this.http.patch<Update>(updateUrl, update).pipe(
