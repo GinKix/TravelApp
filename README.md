@@ -16,4 +16,4 @@ Une fois connecté, la page listant tous les voyages créés s'affichent. En cli
 Les images ne sont pas liées aux voyages et est encore à implémenter/corriger.
 Les places ne sont pas filtrées par voyage concerné et s'affichent toutes et partout. Une tentative est disponible en commentaire dans les fichiers concernés. 
 L'enregistrement de l'utilisateur fonctionne mais on ne reçoit pas de réponse, même en cas de succès. 
-Pour accéder aux détails d'un voyage, il suffit de cliquer sur l'image. En raison du bouton "supprimer" nous n'avons pas pu rendre toute la card clicable. Nous n'arrivons plus à ajouter des places, cela fonctionnait bien au début, il nous semble qu'il s'agit d'une limitation de nombre venant de l'API
+Pour accéder aux détails d'un voyage, il suffit de cliquer sur l'image. En raison du bouton "supprimer" nous n'avons pas pu rendre toute la card clicable. Nous n'arrivons plus à ajouter des places, cela fonctionnait bien au début, il nous semble qu'il s'agit d'une limitation de nombre venant de l'API.
