@@ -2,6 +2,7 @@ import { Injectable, NgModule } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Voyages } from './models/voyage-request';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   imports: [HttpClientModule],
@@ -15,7 +16,7 @@ export class TripsService {
   getTrips(): Observable<Voyages[]> {
     return of([]);
     /* return of([ 
-      this.http.get('https://devmobil-near-bar.herokuapp.com/api/trips');  
+      this.http.get(`${environment.apiUrl}/trips`);  
       //  id: 'superId',
       //  title: 'fantasticTitle',
       //  description: 'niceDescription',

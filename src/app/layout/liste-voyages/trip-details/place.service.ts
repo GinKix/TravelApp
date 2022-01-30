@@ -19,7 +19,7 @@ export class PlaceService {
 
   createPlace(placePayload: IPlace): Observable<PlaceResponse> {
     return this.httpClient.post<PlaceResponse>(
-      'https://devmobil-near-bar.herokuapp.com/api/places',
+      `${environment.apiUrl}/places`,
       /* {
         $API_URL;
       }*/
@@ -29,16 +29,15 @@ export class PlaceService {
 
   getPlaces(): Observable<PlaceResponse[]> {
     return this.httpClient.get<PlaceResponse[]>(
-      'https://devmobil-near-bar.herokuapp.com/api/places'
+      `${environment.apiUrl}/places`
     );
   }
 
   /*************   Tentative pour récupérer les places spécifiques d'un voyage.   ************* */
   // getPlaces(id: string): Observable<PlaceResponse> {
-  //   const url = `{'https://'devmobil-near-bar.herokuapp.com/api}/places?id=${id}`;
 
   // return this.httpClient.get<PlaceVoyage[]>(
-  //   'https://devmobil-near-bar.herokuapp.com/api/places'
+  //   `${environment.apiUrl}/places`
   // ); /*${id}*/
 
   // return this.httpClient.get<PlaceResponse>(url).pipe(
@@ -62,7 +61,7 @@ export class PlaceService {
 
   deletePlace(placeID: string): Observable<any> {
     return this.httpClient.delete<any>(
-      `https://devmobil-near-bar.herokuapp.com/api/places/${placeID}`
+      `${environment.apiUrl}/places/${placeID}`
     );
   }
 

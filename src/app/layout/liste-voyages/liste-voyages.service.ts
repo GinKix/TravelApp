@@ -21,7 +21,7 @@ export class ListeVoyagesService {
   getVoyages(): Observable<VoyageResponse[]> {
     return this.http
       .get<rawVoyageResponse[]>(
-        'https://devmobil-near-bar.herokuapp.com/api/trips'
+        `${environment.apiUrl}/trips`
       )
       .pipe(map((rawVoyage) => rawVoyage.map(rawTripToTrip)));
   }
@@ -39,7 +39,7 @@ export class ListeVoyagesService {
   //crer methode pour recup 1 voyage. Elle aura un id,
   getOneVoyage(tripID: string): Observable<VoyageResponse> {
     return this.http.get<VoyageResponse>(
-      `https://devmobil-near-bar.herokuapp.com/api/trips/${tripID}`
+      `${environment.apiUrl}/trips/${tripID}`
     );
   }
 
@@ -59,7 +59,7 @@ export class ListeVoyagesService {
 
   deleteTrip(tripID: string): Observable<any> {
     return this.http.delete<any>(
-      `https://devmobil-near-bar.herokuapp.com/api/trips/${tripID}`
+      `${environment.apiUrl}/trips/${tripID}`
     );
   }
 
