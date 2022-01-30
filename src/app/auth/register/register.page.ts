@@ -45,6 +45,9 @@ export class RegisterPage implements OnInit {
       return;
     }
 
+      // Hide any previous login error.
+      this.registerError = false;
+
     // Perform the authentication request to the API.
     this.auth.register(this.registerPayload).subscribe({
       next: () => this.router.navigateByUrl('/'),
