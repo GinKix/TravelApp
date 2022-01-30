@@ -46,7 +46,7 @@ export class AuthService {
     return from(this.storage.set('auth', auth));
   }
 
-  private saveRegister$(register: AuthResponse): Observable<void> {
+  private saveRegister$(register: IRegister): Observable<void> {
     return from(this.storage.set('users', register));
   }
 
@@ -72,7 +72,7 @@ export class AuthService {
 
   register(iregister: IRegister): Observable<User> {
     const registerUrl = `${environment.apiUrl}/users`;
-    return this.http.post<AuthResponse>(registerUrl, iregister).pipe(
+    return this.http.post<IRegister>(registerUrl, iregister).pipe( 
       delayWhen((register) => this.saveRegister$(register)),
       map((register) => {
         this.#register$.next(register);
@@ -84,7 +84,7 @@ export class AuthService {
 
   logIn$(authRequest: AuthRequest): Observable<User> {
     const authUrl = `${environment.apiUrl}auth`;
-    return this.http.post<IRegister>(authUrl, authRequest).pipe(
+    return this.http.post<AuthResponse>(authUrl, authRequest).pipe(
       // Ralentir le flux observable pendant l'authentification
       delayWhen((auth) => this.saveAuth$(auth)),
       map((auth) => {
