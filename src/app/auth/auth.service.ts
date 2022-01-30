@@ -19,7 +19,7 @@ import { Update } from "../models/update";
 @Injectable({ providedIn: "root" })
 export class AuthService {
   #auth$: ReplaySubject<AuthResponse | undefined>;
-  #register$: ReplaySubject<AuthResponse | undefined>;
+  #register$: ReplaySubject<IRegister | undefined>;
   #update$: ReplaySubject<Update | undefined>;
 
   constructor(private http: HttpClient, private storage: Storage) {
